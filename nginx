@@ -1,0 +1,14 @@
+Nginx IP访问控制，只允许指定的IP地址访问
+配置的文件是vi /etc/nginx/conf.d/neucloud.conf
+特定IP进行访问，其他不能进行访问且页面会跳转进入403.html
+
+    location / {
+        try_files $uri $uri/ @router;
+        index index.html;
+        allow 10.124.130.0/24;只允许ip10.124.130.0/24进行访问。
+        deny    all;  拒绝所有的ip访问，这样设置后，就只有ip为10.124.130.0/24可以访问nginx的网站。拒绝后返回的是403错误,这样报403和404错误时直接返回维护页面内容.
+    }
+   error_page  404 403 500 502 503 504  /403.html;
+   location = /403.html{
+        root /var/www/saas;
+   }
