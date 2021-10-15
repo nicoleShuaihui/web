@@ -44,5 +44,5 @@ rabbitmqctl report
 #查看MQ镜像队列复制情况
 rabbitmqctl list_queues -p vstation name slave_pids synchronised_slave_pids
 ```
-[分区故障处理] (https://github.com/nicoleShuaihui/web/issues/9#issue-1027120961)
+[分区故障处理](https://github.com/nicoleShuaihui/web/issues/9#issue-1027120961)
 
