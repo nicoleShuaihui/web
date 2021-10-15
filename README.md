@@ -44,5 +44,50 @@ rabbitmqctl report
 #查看MQ镜像队列复制情况
 rabbitmqctl list_queues -p vstation name slave_pids synchronised_slave_pids
 ```
+
+```
+# 配置用户并设置密码
+./rabbitmqctl add_user vstation vstation
+# 配置用户TAG
+./rabbitmqctl set_user_tags vstation monitoring policymaker
+# 新增vhost
+./rabbitmqctl add_vhost vstation
+# 设置用户权限
+./rabbitmqctl set_permissions -p vstation vstation '.' '.' '.*'
+# 设置策略
+./rabbitmqctl set_policy -p vstation vstation '.*' '{"ha-mode": "all"}'
+# 配置用户并设置密码
+./rabbitmqctl add_user vstation_notify vstation_notify
+# 配置用户TAG
+./rabbitmqctl set_user_tags vstation_notify monitoring policymaker
+# 新增vhost
+./rabbitmqctl add_vhost vstation_notify
+# 设置用户权限
+./rabbitmqctl set_permissions -p vstation_notify vstation_notify '.' '.' '.*'
+# 设置策略
+./rabbitmqctl set_policy -p vstation_notify vstation_notify '.*' '{"ha-mode": "all"}'
+# 配置用户并设置密码
+./rabbitmqctl add_user pcmsg pcmsg
+# 配置用户TAG
+./rabbitmqctl set_user_tags pcmsg monitoring policymaker
+# 新增vhost
+./rabbitmqctl add_vhost pcmsg
+# 设置用户权限
+./rabbitmqctl set_permissions -p pcmsg pcmsg '.' '.' '.*'
+# 设置策略
+./rabbitmqctl set_policy -p pcmsg pcmsg '.*' '{"ha-mode": "all"}'
+# 检查
+./rabbitmqctl  list_vhosts
+./rabbitmqctl  list_users
+
+# 创建管理员账户
+./rabbitmqctl add_user tce tce@#fEa34bd
+./rabbitmqctl set_user_tags tce administrator
+./rabbitmqctl set_permissions -p vstation tce '.' '.' '.*'
+./rabbitmqctl set_permissions -p vstation_notify tce '.' '.' '.*'
+./rabbitmqctl set_permissions -p pcmsg tce '.' '.' '.*'
+./rabbitmqctl set_permissions -p / tce '.' '.' '.*'
+```
+
 [分区故障处理](https://github.com/nicoleShuaihui/web/issues/9#issue-1027120961)
 
