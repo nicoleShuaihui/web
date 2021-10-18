@@ -103,5 +103,5 @@ rabbitmqctl list_queues -p vstation name slave_pids synchronised_slave_pids
 ```
 grep "ERROR" /var/log/ambari-agent/ambari-agent.log
 ```
-#dbsql
-1,[dbsql打基线](https://github.com/nicoleShuaihui/web/issues/10#issue-1028606309)
+# dbsql
+1、[dbsql打基线](https://github.com/nicoleShuaihui/web/issues/10#issue-1028606309)
