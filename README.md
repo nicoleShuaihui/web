@@ -91,3 +91,15 @@ rabbitmqctl list_queues -p vstation name slave_pids synchronised_slave_pids
 
 [分区故障处理](https://github.com/nicoleShuaihui/web/issues/9#issue-1027120961)
 
+# ceph 
+集群状态查看：
+
+> ceph -c /data/cos/ceph.CLUSTERMON_B.conf -s
+
+监控节点状态信息：
+> ceph -c /data/cos/ceph.CLUSTERMON_B.conf mon stat
+
+常见排错:
+```
+grep "ERROR" /var/log/ambari-agent/ambari-agent.log
+```
